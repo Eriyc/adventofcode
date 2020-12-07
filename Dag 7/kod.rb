@@ -2,7 +2,7 @@
 def star_one
   bags = {}
   File.read('input.in').lines(chomp: true).each do |line|
-    pre, post = line.gsub('.', '').gsub(/ bags?/, '').split(' contain ')
+  pre, post = line.gsub('.', '').gsub(/ bags?/, '').split(' contain ')
     bags[pre] = post.split(',').map { |t| count, bag = t.split(' ', 2); [count.to_i, bag] }
   end
 
@@ -46,5 +46,9 @@ def star_two
   puts out.values.sum
 end
 
+start = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 star_one
+finish = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 star_two
+diff = finish - start # gets time is seconds as a float
+puts diff
