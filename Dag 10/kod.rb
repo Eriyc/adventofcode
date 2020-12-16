@@ -1,3 +1,5 @@
+start = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+
 # ta input från argv[0]
 data = $<.map(&:to_i).sort
 
@@ -20,3 +22,6 @@ data.each do |x|
 end
 p arrangements.values.last
 # p ([19] - [nil]).sum
+finish = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+diff = finish - start # gets time is seconds as a float
+puts "Execution time: #{diff}s"
